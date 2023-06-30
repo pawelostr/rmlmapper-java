@@ -228,7 +228,7 @@ public class AccessFactory {
     private RDBAccess getRDBAccess(QuadStore rmlStore, Term source, Term logicalSource) {
 
         // - Table
-        List<Term> tables = Utils.getObjectsFromQuads(rmlStore.getQuads(logicalSource, new NamedNode(NAMESPACES.RR + "tableName"), null));
+        List<Term> tables = Utils.getObjectsFromQuads(rmlStore.getQuads(logicalSource, new NamedNode(NAMESPACES.RML + "tableName"), null));
 
         // Retrieve database information from source object
 

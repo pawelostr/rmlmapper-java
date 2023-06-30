@@ -77,13 +77,13 @@ public class MappingConformer {
         Converter converter = new R2RMLConverter(store);
 
         // grab all terms that contain a subject map
-        List<Term> triplesMaps = Utils.getSubjectsFromQuads(store.getQuads(null, new NamedNode(RR + "subjectMap"), null));
+        List<Term> triplesMaps = Utils.getSubjectsFromQuads(store.getQuads(null, new NamedNode(RML + "subjectMap"), null));
 
         // grab all terms that contain a logical source
         List<Term> logicalSources = Utils.getSubjectsFromQuads(store.getQuads(null, new NamedNode(RML + "logicalSource"), null));
 
         // grab all terms that contain a logical table
-        List<Term> logicalTables = Utils.getSubjectsFromQuads(store.getQuads(null, new NamedNode(RR + "logicalTable"), null));
+        List<Term> logicalTables = Utils.getSubjectsFromQuads(store.getQuads(null, new NamedNode(RML + "logicalTable"), null));
 
         triplesMaps = triplesMaps.stream()
                 .filter(term -> logicalSources.contains(term) || logicalTables.contains(term))

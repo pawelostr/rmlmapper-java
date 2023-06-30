@@ -27,13 +27,13 @@ public class R2RMLConverter implements Converter {
     }
 
     /**
-     * TriplesMap is R2RML if RR:logicalTable property is found
+     * TriplesMap is R2RML if RML:logicalTable property is found
      *
      * @param triplesMap
      * @return true if triplesMap is R2RML (tripleMap contains a rr:logicalTable)
      */
     public boolean detect(Term triplesMap) {
-        return store.contains(triplesMap, new NamedNode(RR + "logicalTable"), null);
+        return store.contains(triplesMap, new NamedNode(RML + "logicalTable"), null);
     }
 
     /**
@@ -55,7 +55,7 @@ public class R2RMLConverter implements Converter {
         // Get logical table
         try {
             logicalTable = store
-                    .getQuad(triplesMap, new NamedNode(RR + "logicalTable"), null)
+                    .getQuad(triplesMap, new NamedNode(RML + "logicalTable"), null)
                     .getObject();
         } catch (Exception e) {
             // Also not R2RML
@@ -95,19 +95,19 @@ public class R2RMLConverter implements Converter {
 
         store.addQuad(triplesMap, new NamedNode(RML + "logicalSource"), logicalSource, null);
         store.addQuad(logicalSource, new NamedNode(RML + "referenceFormulation"),
-                new NamedNode(NAMESPACES.QL + "CSV")
+                new NamedNode(NAMESPACES.RML + "CSV")
         );
 
         // Also add old R2RML for AccessFactory property
         store.addQuad(logicalSource, new NamedNode(RML + "source"),
                 database
         );
-        store.tryPropertyTranslation(logicalTable, new NamedNode(RR + "sqlQuery"), logicalSource, new NamedNode(RML + "query"));
-        store.tryPropertyTranslation(logicalTable, new NamedNode(RR + "tableName"), logicalSource, new NamedNode(RR + "tableName"));
-        store.tryPropertyTranslation(logicalTable, new NamedNode(RR + "sqlVersion"), logicalSource, new NamedNode(RR + "sqlVersion"));
+        store.tryPropertyTranslation(logicalTable, new NamedNode(RML + "sqlQuery"), logicalSource, new NamedNode(RML + "query"));
+        store.tryPropertyTranslation(logicalTable, new NamedNode(RML + "tableName"), logicalSource, new NamedNode(RML + "tableName"));
+        store.tryPropertyTranslation(logicalTable, new NamedNode(RML + "sqlVersion"), logicalSource, new NamedNode(RML + "sqlVersion"));
 
         // Rename on whole store instead of deep search in TriplesMap Resource
-        store.renameAll(new NamedNode(RR + "column"), new NamedNode(RML + "reference"));
-        store.removeQuads(triplesMap, new NamedNode(RR + "logicalTable"), null);
+        store.renameAll(new NamedNode(RML + "column"), new NamedNode(RML + "reference"));
+        store.removeQuads(triplesMap, new NamedNode(RML + "logicalTable"), null);
     }
 }

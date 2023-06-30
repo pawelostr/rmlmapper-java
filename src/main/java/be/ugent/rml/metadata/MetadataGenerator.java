@@ -154,7 +154,7 @@ public class MetadataGenerator {
         termMaptoActivityMap = new HashMap<>();
 
         for (Term triplesMap : triplesMaps) {
-            List<Term> subjectMaps = Utils.getObjectsFromQuads(mappingQuads.getQuads(triplesMap, new NamedNode(NAMESPACES.RR + "subjectMap"),
+            List<Term> subjectMaps = Utils.getObjectsFromQuads(mappingQuads.getQuads(triplesMap, new NamedNode(NAMESPACES.RML + "subjectMap"),
                     null));
 
             if (!subjectMaps.isEmpty()) {
@@ -162,15 +162,15 @@ public class MetadataGenerator {
                 createActivityStatementsWithResultActivity(subjectMap, termMaptoActivityMap, triplesMaptoActivityMap.get(triplesMap));
             }
 
-            List<Term> predicateObjectMaps = Utils.getObjectsFromQuads(mappingQuads.getQuads(triplesMap, new NamedNode(NAMESPACES.RR + "predicateObjectMap"),
+            List<Term> predicateObjectMaps = Utils.getObjectsFromQuads(mappingQuads.getQuads(triplesMap, new NamedNode(NAMESPACES.RML + "predicateObjectMap"),
                     null));
 
             for (Term pom : predicateObjectMaps) {
                 Term pomActivity = createActivityStatementsWithResultActivity(pom, termMaptoActivityMap, triplesMaptoActivityMap.get(triplesMap));
 
-                List<Term> predicateMaps = Utils.getObjectsFromQuads(mappingQuads.getQuads(pom, new NamedNode(NAMESPACES.RR + "predicateMap"),
+                List<Term> predicateMaps = Utils.getObjectsFromQuads(mappingQuads.getQuads(pom, new NamedNode(NAMESPACES.RML + "predicateMap"),
                         null));
-                List<Term> objectMaps = Utils.getObjectsFromQuads(mappingQuads.getQuads(pom, new NamedNode(NAMESPACES.RR + "objectMap"),
+                List<Term> objectMaps = Utils.getObjectsFromQuads(mappingQuads.getQuads(pom, new NamedNode(NAMESPACES.RML + "objectMap"),
                         null));
 
                 createActivityStatementsWithResultActivity(predicateMaps, termMaptoActivityMap, pomActivity);

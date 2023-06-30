@@ -48,7 +48,7 @@ public class Initializer {
         ArrayList<Term> temp = new ArrayList<>();
 
         for(Term map: maps) {
-            if (this.rmlStore.getQuads(null, new NamedNode(NAMESPACES.FNML + "functionValue"), map).isEmpty()) {
+            if (this.rmlStore.getQuads(null, new NamedNode(NAMESPACES.RML + "functionValue"), map).isEmpty()) {
                 temp.add(map);
             }
         }

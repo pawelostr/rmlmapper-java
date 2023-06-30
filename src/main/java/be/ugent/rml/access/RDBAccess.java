@@ -108,7 +108,7 @@ public class RDBAccess implements Access {
 
             ResultSet rs = statement.executeQuery(query);
 
-            if ((NAMESPACES.QL + "XPath").equals(contentType)) {
+            if ((NAMESPACES.RML + "XPath").equals(contentType)) {
                 inputStream = getXMLInputStream(rs);
             } else {
                 inputStream = getCSVInputStream(rs);

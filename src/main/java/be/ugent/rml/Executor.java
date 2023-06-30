@@ -156,7 +156,7 @@ public class Executor {
                         }
 
                         terms.forEach(term -> {
-                            if (!term.equals(new NamedNode(NAMESPACES.RR + "defaultGraph"))) {
+                            if (!term.equals(new NamedNode(NAMESPACES.RML + "defaultGraph"))) {
                                 subjectGraphs.add(new ProvenancedTerm(term));
                             }
                         });
@@ -195,7 +195,7 @@ public class Executor {
 
             if (pogMapping.getGraphMappingInfo() != null && pogMapping.getGraphMappingInfo().getTermGenerator() != null) {
                 pogMapping.getGraphMappingInfo().getTermGenerator().generate(record).forEach(term -> {
-                    if (!term.equals(new NamedNode(NAMESPACES.RR + "defaultGraph"))) {
+                    if (!term.equals(new NamedNode(NAMESPACES.RML + "defaultGraph"))) {
                         poGraphs.add(new ProvenancedTerm(term));
                     }
                 });

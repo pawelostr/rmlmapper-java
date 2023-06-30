@@ -59,7 +59,7 @@ public class RecordsFactory {
 
             // Get Logical Source information
             List<Term> referenceFormulations = Utils.getObjectsFromQuads(rmlStore.getQuads(logicalSource, new NamedNode(NAMESPACES.RML + "referenceFormulation"), null));
-            List<Term> tables = Utils.getObjectsFromQuads(rmlStore.getQuads(logicalSource, new NamedNode(NAMESPACES.RR + "tableName"), null));
+            List<Term> tables = Utils.getObjectsFromQuads(rmlStore.getQuads(logicalSource, new NamedNode(NAMESPACES.RML + "tableName"), null));
 
             // If no rml:referenceFormulation is given, but a table is given --> CSV
             if (referenceFormulations.isEmpty() && !tables.isEmpty()) {
